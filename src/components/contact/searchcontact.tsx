@@ -1,9 +1,14 @@
+import { PURPLE, Comment } from "../../helpers/color";
+
 const SearchContact = () => {
   return (
     <div className="w-full sm:w-72" dir="rtl">
       <div className="flex">
         {/* Purple label */}
-        <div className="bg-purple-600 text-white px-3 flex items-center rounded-r-md">
+        <div
+          className=" text-white px-3 flex items-center rounded-r-md"
+          style={{ backgroundColor: PURPLE }}
+        >
           جستجو
         </div>
 
@@ -11,6 +16,7 @@ const SearchContact = () => {
         <input
           type="text"
           placeholder="جستجوی مخاطب"
+          style={{ backgroundColor: Comment }}
           className="
             w-full
             bg-gray-200
