@@ -1,6 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+  direction: rtl;
+  background-color: rgb(86, 131, 146);
+}
 @font-face {
   font-family: "Vazir";
   src: url("../fonts/Vazir.eot");
@@ -15,6 +20,5 @@
 }
 
 body {
-  margin-top: 15px;
   font-family: "vazir";
 }
