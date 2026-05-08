@@ -1,15 +1,6 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Contacts = () => {
-  const navigate = useNavigate();
-
-  const handleProfile = () => {
-    const result = window.confirm("مطمئنی که میخوای به صفحه پروفایلت بری ؟؟؟");
-    if (result) {
-      navigate("/profile");
-    }
-  };
-
   return (
     <div className="flex bg-gray-700 justify-around items-center p-2">
       <Link
@@ -18,21 +9,25 @@ const Contacts = () => {
       >
         تماس با ما
       </Link>
-
-      <p className="text-white hover:text-red-600 cursor-pointer transition-all">
-        محصولات
-      </p>
-
-      <p className="text-white hover:text-red-600 cursor-pointer transition-all">
-        سبد خرید
-      </p>
-
-      <p
-        onClick={handleProfile}
+      <Link
+        to={"Products"}
         className="text-white hover:text-red-600 cursor-pointer transition-all"
       >
-        پروفایل
-      </p>
+        <p>محصولات</p>
+      </Link>
+
+      <Link
+        to={"/Shoppingcart"}
+        className="text-white hover:text-red-600 cursor-pointer transition-all"
+      >
+        <p>سبد خرید</p>
+      </Link>
+      <Link
+        to={"/Profile"}
+        className="text-white hover:text-red-600 cursor-pointer transition-all"
+      >
+        <p>پروفایل</p>
+      </Link>
 
       <Link
         to={"/about-us"}

@@ -2,17 +2,21 @@ import { Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import AboutUs from "./pages/AboutUs";
 import ContactUs from "./pages/ContactUs";
-import Skot from "./pages/Skot";
 import NotFoundPage from "./pages/NotFoundPage";
+import Shoppingcart from "./pages/Shoppingcart";
+import Products from "./pages/Products";
+import Exercises from "./pages/Exercises";
 // import NotFoundPage from "../pages/NotFoundPage";
-
 function App() {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/about-us" element={<AboutUs />} />
       <Route path="/contact-us" element={<ContactUs />} />
-      <Route path="/skot" element={<Skot />} />
+      <Route path="/Shoppingcart" element={<Shoppingcart />} />
+      <Route path="/Products" element={<Products />} />
+
+      <Route path="/exercises/:id" element={<Exercises />} />
 
       <Route path="*" element={<NotFoundPage />} />
     </Routes>
