@@ -1,24 +1,8 @@
+// import { useEffect, useState } from "react";
 import SportEdu from "../components/SportEdu";
-
+// import axios from "axios";
+// import { User } from "../helpers/Type";
 const Home = () => {
-  const users: {
-    id: number;
-    name: string;
-    role: string;
-  } = {
-    id: 1,
-    name: "amir",
-    role: "ADMIN",
-  };
-
-  console.log(users);
-
-  if (users.role == "ADMIN") {
-    console.log("وارد شدید ");
-  } else {
-    console.log("نشدید");
-  }
-
   return (
     <div>
       <SportEdu />

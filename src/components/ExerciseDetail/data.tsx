@@ -1,7 +1,7 @@
 export const exercises = [
   {
     id: 1,
-    title: "اسکات پا",
+    title: "حرکات پا",
     slug: "squat",
     image: "/images/SportEdu/edu1.jpg",
     images: [
