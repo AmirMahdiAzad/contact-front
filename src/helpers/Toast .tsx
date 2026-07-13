@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+// import React, { useState, useEffect } from "react";
 
 const Toast = ({ text, status }) => {
   // اگر status برابر 201 بود سبز، در غیر این صورت قرمز
