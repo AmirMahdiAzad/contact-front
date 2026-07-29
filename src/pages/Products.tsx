@@ -1,4 +1,12 @@
 const Products = () => {
-  return <h1> prodact</h1>;
+  return (
+<div>
+
+
+</div>
+
+
+
+  )
 };
 export default Products;
