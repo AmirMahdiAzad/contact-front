@@ -276,10 +276,10 @@
 // };
 
 // export default Singup;
-import Toast from "../helpers/Toast ";
+import { toast } from "react-toastify";
 import { FaUserPlus } from "react-icons/fa";
 import axios from "axios";
-import {  useState } from "react";
+// import {  useState } from "react";
 
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -287,14 +287,6 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { signupSchema, SignupForm } from "../validations/signupSchema";
 
 const Signup = () => {
-  const [toast, setToast] = useState<{
-    text: string;
-    status: number | null;
-  }>({
-    text: "",
-    status: null,
-  });
-
   const {
     register,
     handleSubmit,
@@ -311,17 +303,6 @@ const Signup = () => {
     },
   });
 
-  const showToast = (text: string, status: number) => {
-    setToast({ text, status });
-
-    setTimeout(() => {
-      setToast({
-        text: "",
-        status: null,
-      });
-    }, 3000);
-  };
-
   const onSubmit = async (data: SignupForm) => {
     try {
       const responseServer = await axios.post(
@@ -336,11 +317,11 @@ const Signup = () => {
 
       console.log(responseServer);
 
-      showToast("ثبت نام با موفقیت انجام شد.", 201);
+      toast.success("ثبت نام با موفقیت انجام شد");
 
       reset();
     } catch {
-      showToast("ثبت نام انجام نشد. دوباره تلاش کنید.", 500);
+      toast.error("ثبت نام انجام نشد. دوباره تلاش کنید.");
     }
   };
 
@@ -355,16 +336,9 @@ const Signup = () => {
     focus:border-primary
     duration-200
   `;
-  
-
-  
 
   return (
     <div className="bg-background min-h-screen py-10">
-      {toast.status !== null && (
-        <Toast text={toast.text} status={toast.status} />
-      )}
-
       <div className="flex justify-center items-center gap-3 mb-20">
         <FaUserPlus className="text-primary text-4xl" />
         <h1 className="text-4xl text-text font-bold mr-3">ثبت نام</h1>
@@ -399,7 +373,6 @@ const Signup = () => {
           </label>
 
           <input
-            
             id="fname"
             type="text"
             className={inputStyle}
