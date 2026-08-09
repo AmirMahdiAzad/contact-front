@@ -1,18 +1,15 @@
-type IAddress = {
-  city: string;
-};
-type ICompany = {
+type userType = {
+  id: number;
+  documentId: string;
   name: string;
-  bs: string;
+  email: string;
+  phone: string;
+
+  image?: {
+    id: number;
+    name: string;
+    url: string;
+  };
 };
 
-type userType = {
-  name: string;
-  phone: string;
-  username: string;
-  id: number;
-  email: string;
-  address: IAddress;
-  company: ICompany;
-};
 export default userType;

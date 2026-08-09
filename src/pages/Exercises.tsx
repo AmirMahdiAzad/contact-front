@@ -49,7 +49,7 @@ const Exercises = () => {
         "
         >
           {" "}
-          <span className="text-4xl"> توضیحات </span>: {ex.description}
+          
         </h2>
       </div>
 

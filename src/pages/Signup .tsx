@@ -279,7 +279,6 @@
 import { toast } from "react-toastify";
 import { FaUserPlus } from "react-icons/fa";
 import axios from "axios";
-// import {  useState } from "react";
 
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -312,12 +311,12 @@ const Signup = () => {
           body: data.fname,
           email: data.email,
           phone: data.phone,
-        },
+        }
       );
 
       console.log(responseServer);
 
-      toast.success("ثبت نام با موفقیت انجام شد");
+      toast.success("ثبت نام با موفقیت انجام شد 🎉");
 
       reset();
     } catch {
@@ -326,50 +325,62 @@ const Signup = () => {
   };
 
   const inputStyle = `
+    w-full
     rounded-xl
     p-3
+    bg-background
+    text-text
+    placeholder:text-muted
     border
     border-borderColor
     focus:outline-none
     focus:ring-2
     focus:ring-primary
     focus:border-primary
-    duration-200
+    duration-300
   `;
 
   return (
-    <div className="bg-background min-h-screen py-10">
-      <div className="flex justify-center items-center gap-3 mb-20">
+    <div className="bg-background min-h-screen py-10 px-4">
+      {/* عنوان */}
+
+      <div className="flex justify-center items-center gap-3 mb-14">
         <FaUserPlus className="text-primary text-4xl" />
-        <h1 className="text-4xl text-text font-bold mr-3">ثبت نام</h1>
+
+        <h1 className="text-4xl md:text-5xl font-extrabold text-text">
+          ثبت نام
+        </h1>
       </div>
+
+      {/* فرم */}
 
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="
           grid
-          gap-y-5
-          text-center
           sm:grid-cols-2
+          gap-y-6
           bg-surface
-          shadow-lg
-          rounded-2xl
-          p-8
           border
           border-borderColor
+          rounded-2xl
+          shadow-xl
+          hover:shadow-2xl
+          duration-300
+          p-8
           max-w-5xl
           mx-auto
         "
       >
         {/* نام */}
 
-        <div className="flex flex-col mr-6 ml-6 mb-5">
+        <div className="flex flex-col px-6">
           <label
             htmlFor="fname"
-            className="text-right text-sm text-muted font-medium"
+            className="text-right text-sm font-medium text-muted mb-2"
           >
             نام
-            <span className="text-error text-xl">*</span>
+            <span className="text-error text-lg mr-1">*</span>
           </label>
 
           <input
@@ -380,7 +391,7 @@ const Signup = () => {
           />
 
           {errors.fname && (
-            <p className="text-error text-sm text-right mt-1">
+            <p className="text-error text-sm text-right mt-2">
               {errors.fname.message}
             </p>
           )}
@@ -388,13 +399,13 @@ const Signup = () => {
 
         {/* نام خانوادگی */}
 
-        <div className="flex flex-col mr-6 ml-6 mb-5">
+        <div className="flex flex-col px-6">
           <label
             htmlFor="lname"
-            className="text-right text-sm text-muted font-medium"
+            className="text-right text-sm font-medium text-muted mb-2"
           >
             نام خانوادگی
-            <span className="text-error text-xl">*</span>
+            <span className="text-error text-lg mr-1">*</span>
           </label>
 
           <input
@@ -405,7 +416,7 @@ const Signup = () => {
           />
 
           {errors.lname && (
-            <p className="text-error text-sm text-right mt-1">
+            <p className="text-error text-sm text-right mt-2">
               {errors.lname.message}
             </p>
           )}
@@ -413,24 +424,24 @@ const Signup = () => {
 
         {/* ایمیل */}
 
-        <div className="flex flex-col mr-6 ml-6 mb-5">
+        <div className="flex flex-col px-6">
           <label
             htmlFor="email"
-            className="text-right text-sm text-muted font-medium"
+            className="text-right text-sm font-medium text-muted mb-2"
           >
             ایمیل
-            <span className="text-error text-xl">*</span>
+            <span className="text-error text-lg mr-1">*</span>
           </label>
 
           <input
             id="email"
-            type="text"
+            type="email"
             className={inputStyle}
             {...register("email")}
           />
 
           {errors.email && (
-            <p className="text-error text-sm text-right mt-1">
+            <p className="text-error text-sm text-right mt-2">
               {errors.email.message}
             </p>
           )}
@@ -438,13 +449,13 @@ const Signup = () => {
 
         {/* شماره تلفن */}
 
-        <div className="flex flex-col mr-6 ml-6 mb-5">
+        <div className="flex flex-col px-6">
           <label
             htmlFor="phone"
-            className="text-right text-sm text-muted font-medium"
+            className="text-right text-sm font-medium text-muted mb-2"
           >
             شماره تلفن
-            <span className="text-error text-xl">*</span>
+            <span className="text-error text-lg mr-1">*</span>
           </label>
 
           <input
@@ -455,7 +466,7 @@ const Signup = () => {
           />
 
           {errors.phone && (
-            <p className="text-error text-sm text-right mt-1">
+            <p className="text-error text-sm text-right mt-2">
               {errors.phone.message}
             </p>
           )}
@@ -463,7 +474,7 @@ const Signup = () => {
 
         {/* دکمه */}
 
-        <div className="flex justify-center sm:col-span-full">
+        <div className="sm:col-span-full flex justify-center mt-6">
           <button
             type="submit"
             disabled={isSubmitting}
@@ -473,12 +484,12 @@ const Signup = () => {
               text-white
               font-semibold
               py-3
-              px-10
+              px-12
               rounded-xl
-              w-full
-              sm:w-auto
-              shadow-md
-              hover:shadow-lg
+              shadow-lg
+              hover:shadow-xl
+              hover:scale-105
+              active:scale-95
               duration-300
               disabled:opacity-50
               disabled:cursor-not-allowed

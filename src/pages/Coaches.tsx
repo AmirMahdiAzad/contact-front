@@ -1,36 +1,64 @@
 import { useEffect, useState } from "react";
-// import User from "../helpers/Type";
 import Loader from "../helpers/Loding";
 import { getCotches } from "../services";
 import userType from "../helpers/Type/userType";
 
 const Coaches = () => {
   const [users, setUsers] = useState<userType[]>([]);
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     const fetchCotches = async () => {
-      const cotches = await getCotches();
+      try {
+        const cotches = await getCotches();
 
-      setUsers(cotches);
+        setUsers(cotches);
+      } catch (error) {
+        console.log(error);
+      } finally {
+        setLoading(false);
+      }
     };
+
     fetchCotches();
   }, []);
 
-  console.log("user state ====> ", users);
-  if (users.length === 0) {
+  if (loading) {
     return <Loader />;
   }
+
   return (
-    <div className="grid grid-cols-1  xl:grid-cols-4 sm:grid-cols-2 lg:grid-cols-3  ">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
       {users.map((user) => (
         <div
-          className=" bg-blue-700 border-4 border-gray-600-0 rounded-xl m-8 font-extrabold "
-          key={user.id}
+          key={user.documentId}
+          className="rounded-xl border border-borderColor bg-surface overflow-hidden  mt-6"
         >
-          <img src="images/SportEdu/edu-man.webp" alt="" />
-          <p className="text-gray-200 p-4">نام : {user.name}</p>
-          <p className="text-gray-200 p-4">شماره تلفن : {user.phone}</p>
-          <p className="text-gray-200 p-4">ایمیل : {user.email}</p>
-          {/* <p className="text-gray-200 p-10">نام : {user.name}</p> */}
+         
+          {/* عکس مربی */}
+          <div className="w-full h-72 bg-slate-100 flex items-center justify-center">
+            <img
+              src={`http://localhost:1337${user.image.url}`}
+              alt={user.name}
+              className="w-full h-full object-contain"
+            />
+          </div>
+
+          {/* اطلاعات مربی */}
+          <div className="p-5 space-y-4">
+            <p className="text-text">
+              <span className="font-bold text-muted">نام :</span> {user.name}
+            </p>
+
+            <p className="text-text">
+              <span className="font-bold text-muted">شماره تلفن :</span>{" "}
+              {user.phone}
+            </p>
+
+            <p className="text-text break-all">
+              <span className="font-bold text-muted">ایمیل :</span> {user.email}
+            </p>
+          </div>
         </div>
       ))}
     </div>

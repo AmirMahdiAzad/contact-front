@@ -42,7 +42,7 @@ const Contacts = () => {
 <Link
 to={"/"}
 >
-      <img src="/images/logo.png" className="w-16 h-16 m-1 md:m-0" alt="Logo"  />
+      <img src="/images/logo4.png" className="w- h-20 " alt="Logo"  />
 </Link>
     </header>
   );
